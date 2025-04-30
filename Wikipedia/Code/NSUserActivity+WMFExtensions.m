@@ -1,7 +1,9 @@
+#import "MKMapItem+Extensions.h"
 #import <WMF/NSUserActivity+WMFExtensions.h>
 #import <WMF/WMF-Swift.h>
 
 @import CoreSpotlight;
+@import MapKit;
 @import MobileCoreServices;
 
 NSString *const WMFNavigateToActivityNotification = @"WMFNavigateToActivityNotification";
@@ -62,15 +64,35 @@ __attribute__((annotate("returns_localized_nsstring"))) static inline NSString *
 + (instancetype)wmf_placesActivityWithURL:(NSURL *)activityURL {
     NSURLComponents *components = [NSURLComponents componentsWithURL:activityURL resolvingAgainstBaseURL:NO];
     NSURL *articleURL = nil;
+    NSString *latitudeString = nil;
+    NSString *longitudeString = nil;
+    NSString *locationName = nil;
+
     for (NSURLQueryItem *item in components.queryItems) {
         if ([item.name isEqualToString:@"WMFArticleURL"]) {
             NSString *articleURLString = item.value;
             articleURL = [NSURL URLWithString:articleURLString];
-            break;
+        } else {
+            NSString *lowercaseName = [item.name lowercaseString];
+            if ([lowercaseName isEqualToString:@"latitude"]) {
+                latitudeString = item.value;
+            } else if ([lowercaseName isEqualToString:@"longitude"]) {
+                longitudeString = item.value;
+            } else if ([lowercaseName isEqualToString:@"name"]) {
+                locationName = [item.value stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+            }
         }
     }
     NSUserActivity *activity = [self wmf_pageActivityWithName:@"Places"];
-    activity.webpageURL = articleURL;
+    if (articleURL) {
+        activity.webpageURL = articleURL;
+    }
+
+    MKMapItem *mapItem = [MKMapItem mapItemWithLatitudeString:latitudeString longitudeString:longitudeString name:locationName];
+    if (mapItem) {
+        activity.mapItem = mapItem;
+    }
+    
     return activity;
 }
 

@@ -10,6 +10,7 @@
 #import "WMFPageHistoryRevision.h"
 #import "UIViewController+WMFStoryboardUtilities.h"
 #import "WMFGradientView.h"
+#import "MKMapItem+Extensions.h"
 
 #import "UIScrollView+ScrollSubviewToLocation.h"
 

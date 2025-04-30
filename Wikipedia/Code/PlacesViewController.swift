@@ -57,6 +57,7 @@ class PlacesViewController: ArticleLocationCollectionViewController, UISearchBar
     // SINGLETONTODO
     fileprivate let imageController = MWKDataStore.shared().cacheController.imageCache
 
+    fileprivate var pendingMapItem: MKMapItem?
     fileprivate var _displayCountForTopPlaces: Int?
     fileprivate var displayCountForTopPlaces: Int {
         switch self.currentSearchFilter {
@@ -226,6 +227,16 @@ class PlacesViewController: ArticleLocationCollectionViewController, UISearchBar
 
         locationManager.startMonitoringLocation()
         mapView.showsUserLocation = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // When showMapItem() is called before the map had loaded it will be showed as soon as the map appeared on screen.
+        if let pendingMapItem {
+            showMapItem(pendingMapItem)
+            self.pendingMapItem = nil
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -2070,6 +2081,21 @@ class PlacesViewController: ArticleLocationCollectionViewController, UISearchBar
         let displayTitle = article.displayTitle ?? title
         let searchResult = MWKSearchResult(articleID: 0, revID: 0, title: title, displayTitle: displayTitle, displayTitleHTML: displayTitleHTML, wikidataDescription: article.wikidataDescription, extract: article.snippet, thumbnailURL: article.thumbnailURL, index: nil, titleNamespace: nil, location: article.location)
         currentSearch = PlaceSearch(filter: .top, type: .location, origin: .user, sortStyle: .links, string: nil, region: region, localizedDescription: title, searchResult: searchResult, siteURL: articleURL.wmf_site)
+    }
+    
+    @objc public func showMapItem(_ mapItem: MKMapItem) {
+        guard let mapView else {
+            // The map item will be showed as soon as the mapView has appeared on screen.
+            self.pendingMapItem = mapItem
+            return
+        }
+
+        let annotation = mapItem.annotation()
+        mapView.centerCoordinate = annotation.coordinate
+        mapView.addAnnotation(annotation)
+
+        let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 10_000, longitudinalMeters: 10_000)
+        mapView.setRegion(region, animated: true)
     }
 
     fileprivate func searchForFirstSearchSuggestion() {
