@@ -708,6 +708,7 @@
 		67A4DA582DC278FE00B61BD3 /* MKMapItem+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A4DA572DC278FE00B61BD3 /* MKMapItem+Extensions.m */; };
 		67A4DA592DC278FE00B61BD3 /* MKMapItem+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A4DA572DC278FE00B61BD3 /* MKMapItem+Extensions.m */; };
 		67A4DA5A2DC278FE00B61BD3 /* MKMapItem+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A4DA572DC278FE00B61BD3 /* MKMapItem+Extensions.m */; };
+		67A4DA5E2DC289A400B61BD3 /* MKMapItem+ExtensionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A4DA5D2DC289A400B61BD3 /* MKMapItem+ExtensionsTests.m */; };
 		67A5E657236775C3007749FB /* GlobalUserInfoFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A5E656236775C3007749FB /* GlobalUserInfoFetcher.swift */; };
 		67A6F13823BFB75300736539 /* ImageCacheDBWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A6F13723BFB75300736539 /* ImageCacheDBWriter.swift */; };
 		67A6F13A23BFEA0400736539 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A6F13923BFEA0400736539 /* ImageFetcher.swift */; };
@@ -3349,6 +3350,7 @@
 		67A486A72BEC009F001D3FF9 /* MagicWordUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicWordUtils.swift; sourceTree = "<group>"; };
 		67A4DA562DC278FE00B61BD3 /* MKMapItem+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKMapItem+Extensions.h"; sourceTree = "<group>"; };
 		67A4DA572DC278FE00B61BD3 /* MKMapItem+Extensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MKMapItem+Extensions.m"; sourceTree = "<group>"; };
+		67A4DA5D2DC289A400B61BD3 /* MKMapItem+ExtensionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MKMapItem+ExtensionsTests.m"; sourceTree = "<group>"; };
 		67A5E656236775C3007749FB /* GlobalUserInfoFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalUserInfoFetcher.swift; sourceTree = "<group>"; };
 		67A6F13723BFB75300736539 /* ImageCacheDBWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheDBWriter.swift; sourceTree = "<group>"; };
 		67A6F13923BFEA0400736539 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
@@ -7766,6 +7768,7 @@
 				BC90DE781C57C5AD007E0E81 /* WMFWelcomeLanguageViewControllerVisualTests.m */,
 				B0D530EA1CE151C10078BAED /* CodeFileLocationTests.m */,
 				19A172FA6AE61E76FCEF4259 /* NSUserActivity+WMFExtensionsTest.m */,
+				67A4DA5D2DC289A400B61BD3 /* MKMapItem+ExtensionsTests.m */,
 				D8800CB01E2FF5B70035D2DB /* QuadKeyTests.swift */,
 				B389CFCA1E6784B600483C06 /* WMFDatabaseHousekeeperTests.swift */,
 				830ECAD51FBDE77F0080B1EF /* ReadingListsTests.swift */,
@@ -9882,6 +9885,7 @@
 				B0E809351C0D1A2F0065EBC0 /* WMFGeometryTests.m in Sources */,
 				6714D6CD245A2C1D00CE5A4A /* ArticleTestHelpers.swift in Sources */,
 				B0E8090B1C0D18D90065EBC0 /* NSString+FormattedAttributedStringTests.m in Sources */,
+				67A4DA5E2DC289A400B61BD3 /* MKMapItem+ExtensionsTests.m in Sources */,
 				D8396D1B22CF7052005625D8 /* WMFArticleTests.swift in Sources */,
 				B0E8090D1C0D18E70065EBC0 /* WMFImageURLParsingTests.m in Sources */,
 				67C6F77827E2E78800B9C864 /* NotificationsCenterCellViewModelThanksTests.swift in Sources */,
